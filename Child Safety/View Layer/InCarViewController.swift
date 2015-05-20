@@ -32,10 +32,10 @@ class InCarViewController: UIViewController
 
     // MARK: - Notification Actions
     
-    var didAskAboutKids = false
     func beaconDeviceDetected()
     {
-        if (!didAskAboutKids)
+        if (!didAskAboutKids &&
+            !shouldPauseAlert)
         {
             var kidsAlert = UIAlertController(title: "Car Beacon Detected",
                 message: "Do you have kids with you?",
@@ -66,18 +66,22 @@ class InCarViewController: UIViewController
     
     // MARK: - Private Helpers
 
+    var didAskAboutKids = false
     var didAskAboutLeftTheCar = false
+    var shouldPauseAlert = false
+    
     func displayAlert_LeftTheCar()
     {
-        if (!didAskAboutLeftTheCar)
+        if (!didAskAboutLeftTheCar &&
+            !shouldPauseAlert)
         {
             var outOfCarAlert = UIAlertController(title: "Car Beacon Not Detected",
                 message: "Did you leave the car?",
                 preferredStyle: UIAlertControllerStyle.Alert)
             outOfCarAlert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler:
                 { (alertAction) -> Void in
-                    /// TODO: Need to set timer to ask again in an hour
                     self.didAskAboutLeftTheCar = false
+                    self.pauseNotifications(60)
             }))
             
             outOfCarAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler:
@@ -110,8 +114,22 @@ class InCarViewController: UIViewController
         { (alertAction) -> Void in
             self.isKidInCar = false
             self.didAskAboutKids = false
+            
+            self.pauseNotifications(60)
         }))
         
         showViewController(kidsAlert, sender: self)
+    }
+    
+    func pauseNotifications(time:NSTimeInterval)
+    {
+        shouldPauseAlert = true
+        
+        NSTimer(timeInterval: time, target: self, selector: Selector("resumeNotifications"), userInfo: nil, repeats: false)
+    }
+    
+    private func resumeNotifications()
+    {
+        shouldPauseAlert = false
     }
 }
