@@ -7,15 +7,20 @@
 //
 
 import UIKit
+//import EstimoteSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    private let cloudManager = ESTCloudManager()
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    {
+        initEstimoteCloud()
+        initNotifications(application)
+        
         return true
     }
 
@@ -41,6 +46,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    /// MARK: - Helpers
+    
+    private func initEstimoteCloud()
+    {
+        // APP ID and APP TOKEN are required to connect to your beacons and make Estimote API calls
+        ESTCloudManager.setupAppID("childsafty", andAppToken: "b333699cea6162f55836e4cab614aee4")
+        
+        // Estimote Analytics allows you to log activity related to monitoring mechanism.
+        // At the current stage it is possible to log all enter/exit events when monitoring
+        // Particular beacons (Proximity UUID, Major, Minor values needs to be provided).
+        ESTCloudManager.enableMonitoringAnalytics(true);
+        ESTCloudManager.enableGPSPositioningForAnalytics(true);
+    }
+    
+    private func initNotifications(application: UIApplication)
+    {
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+        let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        
+        application.registerUserNotificationSettings(settings)
+    }
 
+    // MARK: - Push Notification Delegate
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
+    {
+        // After device is registered in iOS to receive Push Notifications,
+        // device token has to be sent to Estimote Cloud.
+        cloudManager.registerDeviceForRemoteManagement(deviceToken, completion:
+            { (error) -> Void in
+                println(error)
+            })
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)
+    {
+        println("application didRegisterUserNotificationSettings: %@", notificationSettings)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
+    {
+        // Verify if push is comming from Estimote Cloud and is related
+        // to remote beacon management
+        if (ESTBulkUpdater.verifyPushNotificationPayload(userInfo))
+        {
+            // pending settings are fetched and performed automatically
+            // after startWithCloudSettingsAndTimeout: method call
+            ESTBulkUpdater.sharedInstance().startWithCloudSettingsAndTimeout(60 * 60)
+        }
+    
+        completionHandler(UIBackgroundFetchResult.NewData);
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification)
+    {
+        println("application didReceiveLocalNotification: %@", notification)
+    }
 }
 
