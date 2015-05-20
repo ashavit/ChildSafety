@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C47421691B0CB0E600C6E63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47421681B0CB0E600C6E63A /* AppDelegate.swift */; };
-		C474216B1B0CB0E600C6E63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C474216A1B0CB0E600C6E63A /* ViewController.swift */; };
 		C474216E1B0CB0E600C6E63A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C474216C1B0CB0E600C6E63A /* Main.storyboard */; };
 		C47421701B0CB0E600C6E63A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C474216F1B0CB0E600C6E63A /* Images.xcassets */; };
 		C47421731B0CB0E600C6E63A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C47421711B0CB0E600C6E63A /* LaunchScreen.xib */; };
@@ -18,6 +17,7 @@
 		C474218F1B0CC4AC00C6E63A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C474218E1B0CC4AC00C6E63A /* CoreBluetooth.framework */; };
 		C47421911B0CCA7D00C6E63A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47421901B0CCA7D00C6E63A /* UIKit.framework */; };
 		C47421931B0CCA8300C6E63A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47421921B0CCA8300C6E63A /* Foundation.framework */; };
+		C47421961B0CD20900C6E63A /* InCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47421951B0CD20900C6E63A /* InCarViewController.swift */; };
 		D2A19CC5CC9599E8CA8B6376 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B395BDB05BEDAFA3604483F0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,6 @@
 		C47421631B0CB0E600C6E63A /* Child Safety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Child Safety.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47421671B0CB0E600C6E63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C47421681B0CB0E600C6E63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C474216A1B0CB0E600C6E63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C474216D1B0CB0E600C6E63A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C474216F1B0CB0E600C6E63A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C47421721B0CB0E600C6E63A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		C474218E1B0CC4AC00C6E63A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C47421901B0CCA7D00C6E63A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C47421921B0CCA8300C6E63A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C47421951B0CD20900C6E63A /* InCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InCarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +108,9 @@
 		C47421651B0CB0E600C6E63A /* Child Safety */ = {
 			isa = PBXGroup;
 			children = (
+				C47421941B0CD1D700C6E63A /* View Layer */,
 				C47421891B0CBA7900C6E63A /* Managers */,
 				C47421681B0CB0E600C6E63A /* AppDelegate.swift */,
-				C474216A1B0CB0E600C6E63A /* ViewController.swift */,
 				C474216C1B0CB0E600C6E63A /* Main.storyboard */,
 				C474216F1B0CB0E600C6E63A /* Images.xcassets */,
 				C47421711B0CB0E600C6E63A /* LaunchScreen.xib */,
@@ -151,6 +151,14 @@
 				C474218A1B0CBA9700C6E63A /* BeaconManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		C47421941B0CD1D700C6E63A /* View Layer */ = {
+			isa = PBXGroup;
+			children = (
+				C47421951B0CD20900C6E63A /* InCarViewController.swift */,
+			);
+			path = "View Layer";
 			sourceTree = "<group>";
 		};
 		F8D7A55EBB4F71F36998886F /* Frameworks */ = {
@@ -301,7 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C474218B1B0CBA9700C6E63A /* BeaconManager.swift in Sources */,
-				C474216B1B0CB0E600C6E63A /* ViewController.swift in Sources */,
+				C47421961B0CD20900C6E63A /* InCarViewController.swift in Sources */,
 				C47421691B0CB0E600C6E63A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
