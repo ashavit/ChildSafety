@@ -81,7 +81,7 @@ class InCarViewController: UIViewController
             outOfCarAlert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler:
                 { (alertAction) -> Void in
                     self.didAskAboutLeftTheCar = false
-                    self.pauseNotifications(60)
+                    self.pauseNotifications(15)
             }))
             
             outOfCarAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler:
@@ -115,7 +115,7 @@ class InCarViewController: UIViewController
             self.isKidInCar = false
             self.didAskAboutKids = false
             
-            self.pauseNotifications(60)
+            self.pauseNotifications(15)
         }))
         
         showViewController(kidsAlert, sender: self)
@@ -125,10 +125,10 @@ class InCarViewController: UIViewController
     {
         shouldPauseAlert = true
         
-        NSTimer(timeInterval: time, target: self, selector: Selector("resumeNotifications"), userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: Selector("resumeNotifications"), userInfo: nil, repeats: false)
     }
     
-    private func resumeNotifications()
+    func resumeNotifications()
     {
         shouldPauseAlert = false
     }
