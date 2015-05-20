@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        initEstimoteCloud()
+        BeaconManager.sharedInstance
         initNotifications(application)
         
         return true
@@ -46,20 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    /// MARK: - Helpers
-    
-    private func initEstimoteCloud()
-    {
-        // APP ID and APP TOKEN are required to connect to your beacons and make Estimote API calls
-        ESTCloudManager.setupAppID("childsafty", andAppToken: "b333699cea6162f55836e4cab614aee4")
-        
-        // Estimote Analytics allows you to log activity related to monitoring mechanism.
-        // At the current stage it is possible to log all enter/exit events when monitoring
-        // Particular beacons (Proximity UUID, Major, Minor values needs to be provided).
-        ESTCloudManager.enableMonitoringAnalytics(true);
-        ESTCloudManager.enableGPSPositioningForAnalytics(true);
-    }
-    
     private func initNotifications(application: UIApplication)
     {
         UIApplication.sharedApplication().registerForRemoteNotifications()

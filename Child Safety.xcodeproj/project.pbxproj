@@ -13,6 +13,11 @@
 		C47421701B0CB0E600C6E63A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C474216F1B0CB0E600C6E63A /* Images.xcassets */; };
 		C47421731B0CB0E600C6E63A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C47421711B0CB0E600C6E63A /* LaunchScreen.xib */; };
 		C474217F1B0CB0E600C6E63A /* Child_SafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C474217E1B0CB0E600C6E63A /* Child_SafetyTests.swift */; };
+		C474218B1B0CBA9700C6E63A /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C474218A1B0CBA9700C6E63A /* BeaconManager.swift */; };
+		C474218D1B0CC4A800C6E63A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C474218C1B0CC4A800C6E63A /* CoreLocation.framework */; };
+		C474218F1B0CC4AC00C6E63A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C474218E1B0CC4AC00C6E63A /* CoreBluetooth.framework */; };
+		C47421911B0CCA7D00C6E63A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47421901B0CCA7D00C6E63A /* UIKit.framework */; };
+		C47421931B0CCA8300C6E63A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47421921B0CCA8300C6E63A /* Foundation.framework */; };
 		D2A19CC5CC9599E8CA8B6376 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B395BDB05BEDAFA3604483F0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +46,11 @@
 		C474217D1B0CB0E600C6E63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C474217E1B0CB0E600C6E63A /* Child_SafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child_SafetyTests.swift; sourceTree = "<group>"; };
 		C47421881B0CB27900C6E63A /* ObjCBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
+		C474218A1B0CBA9700C6E63A /* BeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
+		C474218C1B0CC4A800C6E63A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C474218E1B0CC4AC00C6E63A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		C47421901B0CCA7D00C6E63A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C47421921B0CCA8300C6E63A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +58,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47421931B0CCA8300C6E63A /* Foundation.framework in Frameworks */,
+				C47421911B0CCA7D00C6E63A /* UIKit.framework in Frameworks */,
+				C474218F1B0CC4AC00C6E63A /* CoreBluetooth.framework in Frameworks */,
+				C474218D1B0CC4A800C6E63A /* CoreLocation.framework in Frameworks */,
 				D2A19CC5CC9599E8CA8B6376 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +108,7 @@
 		C47421651B0CB0E600C6E63A /* Child Safety */ = {
 			isa = PBXGroup;
 			children = (
+				C47421891B0CBA7900C6E63A /* Managers */,
 				C47421681B0CB0E600C6E63A /* AppDelegate.swift */,
 				C474216A1B0CB0E600C6E63A /* ViewController.swift */,
 				C474216C1B0CB0E600C6E63A /* Main.storyboard */,
@@ -130,9 +145,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C47421891B0CBA7900C6E63A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C474218A1B0CBA9700C6E63A /* BeaconManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		F8D7A55EBB4F71F36998886F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C47421921B0CCA8300C6E63A /* Foundation.framework */,
+				C47421901B0CCA7D00C6E63A /* UIKit.framework */,
+				C474218E1B0CC4AC00C6E63A /* CoreBluetooth.framework */,
+				C474218C1B0CC4A800C6E63A /* CoreLocation.framework */,
 				B395BDB05BEDAFA3604483F0 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -273,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C474218B1B0CBA9700C6E63A /* BeaconManager.swift in Sources */,
 				C474216B1B0CB0E600C6E63A /* ViewController.swift in Sources */,
 				C47421691B0CB0E600C6E63A /* AppDelegate.swift in Sources */,
 			);
