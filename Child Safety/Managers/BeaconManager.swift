@@ -118,7 +118,15 @@ class BeaconManager : NSObject, ESTBeaconManagerDelegate
         if let detected = beacon
         {
             closestBeacon = detected
-            NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNameBeaconDetected, object: self)
+            
+            if (detected.proximity == CLProximity.Near)
+            {
+                NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNameBeaconDetected, object: self)
+            }
+            else
+            {
+                NSNotificationCenter.defaultCenter().postNotificationName(kNotificationNameBeaconNotDetected, object: self)
+            }
         }
         else
         {

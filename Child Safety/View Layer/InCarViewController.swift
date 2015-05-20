@@ -37,13 +37,15 @@ class InCarViewController: UIViewController
     {
         if (!didAskAboutKids)
         {
-            var kidsAlert = UIAlertController(title: "Car Beacon Detected", message: "Do have kids with you?", preferredStyle: UIAlertControllerStyle.Alert)
-            kidsAlert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Cancel, handler:
+            var kidsAlert = UIAlertController(title: "Car Beacon Detected",
+                message: "Do you have kids with you?",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            kidsAlert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler:
                 { (alertAction) -> Void in
                     self.isKidInCar = false
             }))
             
-            kidsAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler:
+            kidsAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Cancel, handler:
                 { (alertAction) -> Void in
                     self.isKidInCar = true
             }))
@@ -56,5 +58,23 @@ class InCarViewController: UIViewController
     func beaconDeviceNotDetected()
     {
         println("not detected any more")
+        if (isKidInCar)
+        {
+            var kidsAlert = UIAlertController(title: "Car Beacon Not Detected",
+                message: "Did you leave the car?",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            kidsAlert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler:
+                { (alertAction) -> Void in
+                    /// TODO: Need to set timer to ask again in an hour
+                    
+            }))
+            
+            kidsAlert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Cancel, handler:
+                { (alertAction) -> Void in
+                    /// TODO: Ask he he talk the kid
+                    
+            }))
+
+        }
     }
 }
