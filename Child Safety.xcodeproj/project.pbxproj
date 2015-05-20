@@ -18,6 +18,7 @@
 		C47421911B0CCA7D00C6E63A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47421901B0CCA7D00C6E63A /* UIKit.framework */; };
 		C47421931B0CCA8300C6E63A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47421921B0CCA8300C6E63A /* Foundation.framework */; };
 		C47421961B0CD20900C6E63A /* InCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47421951B0CD20900C6E63A /* InCarViewController.swift */; };
+		C4D734021B0CEBA900D6A092 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D734011B0CEBA900D6A092 /* AudioToolbox.framework */; };
 		D2A19CC5CC9599E8CA8B6376 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B395BDB05BEDAFA3604483F0 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		C47421901B0CCA7D00C6E63A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C47421921B0CCA8300C6E63A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C47421951B0CD20900C6E63A /* InCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InCarViewController.swift; sourceTree = "<group>"; };
+		C4D734011B0CEBA900D6A092 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4D734021B0CEBA900D6A092 /* AudioToolbox.framework in Frameworks */,
 				C47421931B0CCA8300C6E63A /* Foundation.framework in Frameworks */,
 				C47421911B0CCA7D00C6E63A /* UIKit.framework in Frameworks */,
 				C474218F1B0CC4AC00C6E63A /* CoreBluetooth.framework in Frameworks */,
@@ -164,6 +167,7 @@
 		F8D7A55EBB4F71F36998886F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4D734011B0CEBA900D6A092 /* AudioToolbox.framework */,
 				C47421921B0CCA8300C6E63A /* Foundation.framework */,
 				C47421901B0CCA7D00C6E63A /* UIKit.framework */,
 				C474218E1B0CC4AC00C6E63A /* CoreBluetooth.framework */,

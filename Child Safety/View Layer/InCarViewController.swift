@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class InCarViewController: UIViewController
 {
@@ -50,6 +51,9 @@ class InCarViewController: UIViewController
                     self.isKidInCar = true
             }))
             
+            // Play sound
+            AudioServicesPlaySystemSound(1005)
+
             showViewController(kidsAlert, sender: self)
             didAskAboutKids = true
         }
@@ -89,6 +93,9 @@ class InCarViewController: UIViewController
                     self.displayAlert_DidYouRemoveTheKids()
             }))
             
+            // Play sound
+            AudioServicesPlaySystemSound(1005)
+            
             showViewController(outOfCarAlert, sender: self)
             didAskAboutLeftTheCar = true
         }
@@ -104,8 +111,11 @@ class InCarViewController: UIViewController
             style: UIAlertActionStyle.Default,
             handler:
         { (alertAction) -> Void in
-                /// TODO: Play Alarm
-                self.displayAlert_DidYouRemoveTheKids()
+            
+            // Play sound
+            AudioServicesPlaySystemSound(1332)
+            
+            self.displayAlert_DidYouRemoveTheKids()
         }))
         
         kidsAlert.addAction(UIAlertAction(title: "Yes",
@@ -131,5 +141,13 @@ class InCarViewController: UIViewController
     func resumeNotifications()
     {
         shouldPauseAlert = false
+    }
+    @IBOutlet weak var textFiled: UITextField!
+    @IBAction func pressed(sender: AnyObject)
+    {
+        if let num = textFiled.text.toInt()
+        {
+            AudioServicesPlaySystemSound(UInt32(num))
+        }
     }
 }
