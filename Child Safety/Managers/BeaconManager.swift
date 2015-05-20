@@ -14,8 +14,8 @@ class BeaconManager : NSObject, ESTBeaconManagerDelegate
 {
     let estimoteAppId = "childsafty"
     let estimoteAppToken = "b333699cea6162f55836e4cab614aee4"
-//    let beaconProximityId = "B47E6506-7FA7-4226-A2A8-5033E685F418"
-    let beaconProximityId = "B9407F30-F5F8-466E-AFF9-25556B57FE6D" // Estimote default
+    let beaconProximityId = "B47E6506-7FA7-4226-A2A8-5033E685F418"
+//    let beaconProximityId = "B9407F30-F5F8-466E-AFF9-25556B57FE6D" // Estimote default
     
     var estimoteBeaconManager: ESTBeaconManager!
     var beaconRegion: CLBeaconRegion?
@@ -126,7 +126,7 @@ class BeaconManager : NSObject, ESTBeaconManagerDelegate
 
     func beaconManager(manager: AnyObject!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!)
     {
-        println("What to do?")
+        println("What to do with the \(beacons.count) beacons found?")
     }
     
 }
